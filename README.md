@@ -1,13 +1,6 @@
-A large portion of this boilerplate was built at the guidance of this article: https://prestonrichey.com/blog/react-rust-wasm/
+The repo I used for the boilerplate: https://github.com/robtaussig/React-WASM-boilerplate
 
 ## Getting Started
-
-#### Clone Repo
-```
-git clone https://github.com/robtaussig/React-WASM-boilerplate
-
-cd React-WASM-boilerplate
-```
 
 #### Install npm dependencies
 ```
@@ -15,7 +8,8 @@ npm install
 ```
 
 #### Setup Rust
-This can take a while and might appear to have hung if none of the dependencies have been installed to your machine before.
+This can take a while and might appear to have hung if none of the dependencies have been installed to your machine before. <br>
+Miss the step if you've installed rust toolchain with rustup.
 ```
 npm run setup-rust
 ```
@@ -83,4 +77,5 @@ const TestComponent = () => {
 
 ```
 ## Developing
-Changes to your javascript code will hot-reload your app if it's running -- otherwise they will be built at the `npm start` command. Changes to your Rust code must be compiled to wasm before they are accessible to the client. This must be done manually with `npm run build-wasm`.
+Changes to your javascript code will hot-reload your app if it's running -- otherwise they will be built at the `npm start` command. <br> 
+Changes to your Rust code must be compiled to wasm before they are accessible to the client. This must be done manually with `npm run build-wasm`.<br>
