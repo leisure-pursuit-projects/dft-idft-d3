@@ -1,28 +1,34 @@
 {
-  "name": "wasm_boilerplate",
+  "name": "dft-charts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^4.0.2",
-    "react-vis": "^1.11.7",
-    "tsconfig": "^7.0.0",
-    "tslint": "^6.1.3",
-    "tsutils": "^3.20.0",
-    "typescript": "^4.1.5"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/recharts": "^1.8.19",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "recharts": "^2.0.9",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "setup-rust": "node bin/setup.js",
-    "build-wasm": "cd wasm && wasm-pack build",
-    "link-wasm": "cd wasm/pkg && npm link && cd ../ && npm link wasm",
-    "start": "./node_modules/.bin/react-app-rewired start",
-    "build": "./node_modules/.bin/react-app-rewired build",
-    "test": "./node_modules/.bin/react-app-rewired test",
-    "eject": "./node_modules/.bin/react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -35,9 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "react-app-rewired": "^2.1.3",
-    "wasm-loader": "^1.3.0"
   }
 }
