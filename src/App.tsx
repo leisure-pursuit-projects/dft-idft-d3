@@ -1,38 +1,36 @@
 import React from 'react';
+import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis, } from 'recharts';
 import {
-	ScatterChart,
-	Scatter,
-	XAxis,
-	YAxis,
-	CartesianGrid,
-} from 'recharts';
+	SCATTER_FILL_COLOR,
+	SCATTER_MARGIN,
+	SCATTER_SIDE_LENGTH,
+	VECTOR_MOCKUP
+} from './constants/constants';
+import { EScatterName } from './types/types';
 
 
-const data = [
-	{ x: 100, y: 200 },
-	{ x: 120, y: 100 },
-	{ x: 170, y: 300 },
-	{ x: 140, y: 250 },
-	{ x: 150, y: 400 },
-	{ x: 400, y: 280 }
-];
-
-export default function App() {
+export default function App () {
 	return (
-		<ScatterChart
-			width={ 400 }
-			height={ 400 }
-			margin={ {
-				top: 20,
-				right: 20,
-				bottom: 20,
-				left: 20,
-			} }
-		>
-			<CartesianGrid/>
-			<XAxis type="number" dataKey="x"/>
-			<YAxis type="number" dataKey="y"/>
-			<Scatter name="A school" data={ data } fill="#8884d8"/>
-		</ScatterChart>
+		<>
+			{
+				Object.values(EScatterName).map((name) => (
+					<ScatterChart
+						width={ SCATTER_SIDE_LENGTH }
+						height={ SCATTER_SIDE_LENGTH }
+						margin={ {
+							top: SCATTER_MARGIN,
+							right: SCATTER_MARGIN,
+							bottom: SCATTER_MARGIN,
+							left: SCATTER_MARGIN,
+						} }
+					>
+						<CartesianGrid/>
+						<XAxis type="number" dataKey="x"/>
+						<YAxis type="number" dataKey="y"/>
+						<Scatter name={ name } data={ VECTOR_MOCKUP } fill={ SCATTER_FILL_COLOR }/>
+					</ScatterChart>
+				))
+			}
+		</>
 	);
 }
