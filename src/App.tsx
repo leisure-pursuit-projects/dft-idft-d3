@@ -27,7 +27,11 @@ export default function App () {
 						<CartesianGrid/>
 						<XAxis type="number" dataKey="x"/>
 						<YAxis type="number" dataKey="y"/>
-						<Scatter name={ name } data={ VECTOR_MOCKUP } fill={ SCATTER_FILL_COLOR }/>
+						<Scatter
+							name={ name }
+							data={ VECTOR_MOCKUP }
+							fill={ SCATTER_FILL_COLOR }
+						/>
 					</ScatterChart>
 				))
 			}
