@@ -7,14 +7,17 @@ import {
 	VECTOR_MOCKUP
 } from './constants/constants';
 import { EScatterName } from './types/types';
+import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/slider';
+import { Box } from '@chakra-ui/layout';
+import './App.css';
 
-
-export default function App () {
+export function App () {
 	return (
-		<>
+		<div className={ 'app' }>
 			{
 				Object.values(EScatterName).map((name) => (
 					<ScatterChart
+						key={ name }
 						width={ SCATTER_SIDE_LENGTH }
 						height={ SCATTER_SIDE_LENGTH }
 						margin={ {
@@ -35,6 +38,22 @@ export default function App () {
 					</ScatterChart>
 				))
 			}
-		</>
-	);
+			<Slider
+				defaultValue={ 0 }
+				min={ 0 }
+				max={ 100 }
+				step={ 1 }
+				onChangeEnd={ console.error }
+			>
+				<SliderTrack bg={ 'lightgrey' }>
+					<Box
+						position={ 'relative' }
+						right={ 10 }
+					/>
+					<SliderFilledTrack bg="grey"/>
+				</SliderTrack>
+				<SliderThumb boxSize={ 4 }/>
+			</Slider>
+		</div>
+	)
 }
