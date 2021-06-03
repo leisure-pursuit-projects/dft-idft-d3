@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis, } from 'recharts';
-import {
-	SCATTER_FILL_COLOR,
-	SCATTER_MARGIN,
-	SCATTER_SIDE_LENGTH,
-	VECTOR_MOCKUP
-} from './constants/constants';
+import { SCATTER_FILL_COLOR, SCATTER_MARGIN, SCATTER_SIDE_LENGTH, VECTOR_MOCKUP } from './constants/constants';
 import { EScatterName } from './types/types';
-import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/slider';
-import { Box } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/react';
 import './App.css';
+import { getGlobalWasmState, getWasmLibIsLoaded } from './wasm/wasm-loader';
+import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/slider';
+import { Button } from '@chakra-ui/button';
+import { Box } from '@chakra-ui/layout';
 
 export function App () {
 	const [lossPercent, setLossPercent] = useState(0);
+	const [wasmGreeting, setWasmGreeting] = useState('');
+	const [wasmLoadStatus, setWasmLoadStatus] = useState<boolean | 'failed'>(false);
+
+	const handleClick = () => {
+		const wasm = getWasmLibIsLoaded();
+		if (wasm) {
+			setWasmGreeting(wasm.get_greeting());
+		}
+	};
+
+	useEffect(() => {
+		const waitForWasm = async () => {
+			const { promise } = getGlobalWasmState();
+			await promise;
+			const { failedToLoad } = getGlobalWasmState();
+			setWasmLoadStatus(failedToLoad ? 'failed' : true);
+		};
+		waitForWasm()
+			.catch(console.error);
+	}, []);
 
 	const SLIDER = (
 		<>
@@ -38,8 +54,11 @@ export function App () {
 	)
 
 	const BUTTON = (
-		<Button onClick={ console.error }>
-			Generate new vector
+		<Button
+			disabled={ wasmLoadStatus === false || wasmLoadStatus === 'failed' }
+			onClick={ handleClick }
+		>
+			Generate new vector { wasmGreeting }
 		</Button>
 	)
 
