@@ -1,8 +1,8 @@
-export type TVector = TVectorValue[]
+export type TVector = TVectorComplexValue[]
 
-export type TVectorValue = {
-	x: number,
-	y: number
+export type TVectorComplexValue = {
+	re: number,
+	im: number
 }
 
 export enum EScatterName {
