@@ -1,11 +1,11 @@
-export type TVector = TVectorComplexValue[]
+export type ComplexVector = ComplexVectorValue[]
 
-export type TVectorComplexValue = {
+export type ComplexVectorValue = {
 	re: number,
 	im: number
 }
 
-export enum EScatterName {
-	DFT = 'DFT',
-	IDFT = 'IDFT'
+export enum FastFourierTransforms {
+	FFT = 'FFT',
+	IFFT = 'IFFT'
 }
