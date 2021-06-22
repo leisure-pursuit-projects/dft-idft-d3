@@ -1,13 +1,13 @@
-import { ComplexVector } from '../types/types';
+import { ScatterComplexVector } from '../types/types';
 
-export const VECTOR_MOCKUP: ComplexVector = [
+export const VECTOR_MOCKUP: ScatterComplexVector = [
 	{ x: 100, y: 200 },
-	// { re: 120, im: 100 },
-	// { re: 170, im: 300 },
-	// { re: 140, im: 250 },
-	// { re: 150, im: 400 },
-	// { re: 150, im: 400 },
-	// { re: 400, im: 280 }
+	{ x: 120, y: 100 },
+	{ x: 170, y: 300 },
+	{ x: 140, y: 250 },
+	{ x: 150, y: 400 },
+	{ x: 150, y: 400 },
+	{ x: 400, y: 280 }
 ];
 
 export const SCATTER_FILL_COLOR = '#8884d8';

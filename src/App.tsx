@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis } from 'recharts';
 import { SCATTER_FILL_COLOR, SCATTER_MARGIN, SCATTER_SIDE_LENGTH, VECTOR_MOCKUP } from './constants/constants';
-import { FastFourierTransforms } from './types/types';
+import { FFTType } from './types/types';
 import './App.css';
 import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/slider';
 import { Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
 import { FFT } from './fft/fft';
+import { transformComplexVector } from './helpers/transformComplexVector';
 
 export function App() {
 	const [lossPercent, setLossPercent] = useState(0);
@@ -31,7 +32,7 @@ export function App() {
 	// }, []);
 
 	const handleClick = () => {
-		console.error(FFT([0, 1, 2, 1 ,1, 2, 1, 1]));
+		console.error(transformComplexVector(FFT([0, 1, 2, 1 ,1, 2, 1, 1])))
 	};
 
 	const SLIDER = (
@@ -69,7 +70,7 @@ export function App() {
 		<div className={ 'app' }>
 			{
 				Object
-					.values(FastFourierTransforms)
+					.values(FFTType)
 					.map((name) => (
 						<div
 							key={ name }

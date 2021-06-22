@@ -1,11 +1,11 @@
-export type ComplexVector = ComplexVectorValue[]
+export type ScatterComplexVector = ScatterComplexVectorValue[]
 
-export type ComplexVectorValue = {
+export type ScatterComplexVectorValue = {
 	x: number,
 	y: number
 }
 
-export enum FastFourierTransforms {
+export enum FFTType {
 	FFT = 'FFT',
 	IFFT = 'IFFT'
 }

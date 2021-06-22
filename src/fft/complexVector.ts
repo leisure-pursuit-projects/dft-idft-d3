@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 export type ComplexVectorValue = {
 	real: number,
 	imag: number
@@ -13,11 +11,10 @@ export type HandleArray =
 	BaseComplexVector
 
 export class BaseComplexVector {
-	other: HandleArray | unknown;
-	// @ts-ignore
-	ArrayType: any; // @ts-ignore
-	real: any; // @ts-ignore
-	imag: any; // @ts-ignore
+	other: HandleArray = [];
+	ArrayType: any;
+	real: any;
+	imag: any;
 	length: number = 0;
 
 	constructor(
