@@ -11,6 +11,7 @@ import { transformComplexVector } from './helpers/transformComplexVector';
 
 export function App() {
 	const [lossPercent, setLossPercent] = useState(0);
+	const [scatterData, setScatterData] = useState(VECTOR_MOCKUP);
 	// const [wasmGreeting, setWasmGreeting] = useState('');
 	// const [wasmLoadStatus, setWasmLoadStatus] = useState<boolean | 'failed'>(false);
 	//
@@ -32,7 +33,8 @@ export function App() {
 	// }, []);
 
 	const handleClick = () => {
-		console.error(transformComplexVector(FFT([0, 1, 2, 1 ,1, 2, 1, 1])))
+		const fft = transformComplexVector(FFT([0, 1, 2, 1 ,1, 2, 1, 1]));
+		setScatterData(fft);
 	};
 
 	const SLIDER = (
@@ -91,7 +93,7 @@ export function App() {
 								<YAxis type="number" dataKey="y"/>
 								<Scatter
 									name={ name }
-									data={ VECTOR_MOCKUP }
+									data={ scatterData }
 									fill={ SCATTER_FILL_COLOR }
 								/>
 							</ScatterChart>
