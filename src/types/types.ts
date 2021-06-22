@@ -1,8 +1,8 @@
 export type ComplexVector = ComplexVectorValue[]
 
 export type ComplexVectorValue = {
-	re: number,
-	im: number
+	x: number,
+	y: number
 }
 
 export enum FastFourierTransforms {
